@@ -63,11 +63,6 @@ app.get('/', (req, res) => {
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = `mongodb+srv://yfaka001_dev:${db_password}@cluster0.tiftb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-// MongoDB cursors
-const db = client.db('evenzo');
-const usersCollection = db.collection('users');
-const eventsCollection = db.collection('events');
-
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -76,6 +71,11 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
+
+// MongoDB cursors
+const db = client.db('evenzo');
+const usersCollection = db.collection('users');
+const eventsCollection = db.collection('events');
 
 // Function to run the MongoDB client
 async function run() {
